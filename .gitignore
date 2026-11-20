@@ -1,0 +1,6 @@
+.env
+env.txt
+.env.txt
+ai-errors.log
+node_modules/
+*.log

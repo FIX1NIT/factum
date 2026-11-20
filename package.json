@@ -1,0 +1,13 @@
+{
+  "name": "factum",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "FACTUM: карта материалов дела для юристов",
+  "scripts": {
+    "start": "node host.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

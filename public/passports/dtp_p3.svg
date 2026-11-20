@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" width="760" height="520"><defs>
+<filter id="paper" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 .55  0 0 0 0 .5  0 0 0 0 .4  0 0 0 .09 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+<filter id="sh" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#000" flood-opacity=".35"/></filter>
+<filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="2" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="1.6"/></filter>
+<linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8f5ec"/><stop offset="1" stop-color="#ece6d6"/></linearGradient>
+<filter id="wood" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".006 .14" numOctaves="4" seed="11" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 .36  0 0 0 0 .22  0 0 0 0 .12  0 0 0 1.1 -.15"/></filter>
+<linearGradient id="glare" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".38" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".32"/><stop offset=".62" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<radialGradient id="vig" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+<filter id="soft"><feGaussianBlur stdDeviation=".45"/></filter>
+</defs>
+<defs><pattern id="gl" width="40" height="14" patternUnits="userSpaceOnUse"><path d="M0 7 q10 -9 20 0 t20 0" fill="none" stroke="#7d9fcf" stroke-opacity=".35" stroke-width="1"/></pattern>
+<linearGradient id="ph" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d7dfeb"/><stop offset="1" stop-color="#aebbd0"/></linearGradient></defs>
+<rect width="760" height="520" fill="#7a5632"/><rect width="760" height="520" filter="url(#wood)"/><rect width="760" height="520" fill="#000" fill-opacity=".12"/><g transform="translate(380 260) rotate(-3) skewX(-2) skewY(.9) translate(-380 -260)"><g filter="url(#soft)">
+<g filter="url(#sh)"><rect x="30" y="25" width="700" height="470" rx="14" fill="#eef2f8"/></g>
+<rect x="30" y="25" width="700" height="470" rx="14" fill="url(#gl)"/>
+<rect x="30" y="25" width="700" height="470" rx="14" fill="#fff" filter="url(#paper)"/>
+<rect x="30" y="25" width="700" height="50" rx="14" fill="#2f4b78"/><rect x="30" y="55" width="700" height="20" fill="#2f4b78"/>
+<text x="55" y="58" font-size="21" font-weight="700" fill="#fff" letter-spacing="3" font-family="Arial">ПАСПОРТ · ОБРАЗЕЦ</text><text x="705" y="58" font-size="12" fill="#c7d5ec" text-anchor="end" font-family="Arial">УЧЕБНЫЙ МАТЕРИАЛ</text>
+<rect x="55" y="95" width="175" height="225" rx="4" fill="url(#ph)" stroke="#8c9bb3"/>
+<circle cx="142" cy="170" r="42" fill="#8394b0"/><path d="M62 320c0-70 36-100 80-100s80 30 80 100z" fill="#8394b0"/>
+<text x="142" y="360" font-size="11" fill="#6a7b97" text-anchor="middle" font-family="Arial">ФОТО (УСЛОВНОЕ)</text>
+<g font-family="Arial" font-size="11" fill="#5b6f90"><text x="255" y="108">Фамилия / Surname</text><text x="255" y="170">Имя / Given names</text><text x="255" y="232">Дата рождения / Date of birth</text><text x="255" y="294">Номер / Document No.</text><text x="255" y="354">Пол / Sex</text></g>
+<g font-family="Arial" font-size="25" font-weight="700" fill="#1b2840"><text x="255" y="138">Каримова</text><text x="255" y="200">Нодира</text><text x="255" y="262">12.12.1989</text><text x="255" y="324">AA 0000023</text><text x="255" y="382">М</text></g>
+<rect x="30" y="405" width="700" height="90" fill="#e2e8f2"/>
+<text x="52" y="446" font-size="19" fill="#5d6e8a" font-family="Consolas,Courier New,monospace" letter-spacing="1.6">P&lt;XXXKARIMOVA&lt;&lt;NODIRA&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text><text x="52" y="478" font-size="19" fill="#5d6e8a" font-family="Consolas,Courier New,monospace" letter-spacing="1.6">AA00000235XXX8912121F2912121&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;04</text>
+<g transform="rotate(-14 380 260)"><text x="380" y="285" font-size="50" font-weight="800" fill="#b03a2e" fill-opacity=".3" text-anchor="middle" font-family="Arial">ВЫМЫШЛЕНО · ОБРАЗЕЦ</text></g>
+<rect width="760" height="520" fill="url(#glare)"/><rect width="760" height="520" fill="url(#vig)"/></g></g></svg>
