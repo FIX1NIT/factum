@@ -91,13 +91,17 @@ async function analyzeCase(){if(!aiLive||!state||state.mode==='demo'||state.stru
   const bySrc={};(r.documents||[]).forEach(x=>{(bySrc[x.docId]=bySrc[x.docId]||[]).push({...x})});
   const docs=[];let ln=0;for(const d of mine.documents){const list=(bySrc[d.id]||[]).sort((a,b)=>a.start-b.start);if(!list.length)continue;list[0].start=0;list.forEach((x,i)=>{const end=i+1<list.length?list[i+1].start:d.text.length;const t=d.text.slice(x.start,end).trim();if(t)docs.push({id:'l'+(++ln),srcId:d.id,title:x.title,kind:x.kind,text:t})})}
   mine.docs=docs;ensureDocs();
-  mine.norms=[{id:'n0',ref:'Нужно добавить',title:'Применимые нормы',quote:'',relevance:'В базе проверенных норм не нашлось подходящих. Нормы права нужно подобрать и проверить по lex.uz. ИИ не подбирает статьи по памяти, чтобы не ошибиться в номерах.'}];
-  try{const nr=await aiPost('/api/ai/norms',aiPayload());if(state===mine&&nr.norms&&nr.norms.length)mine.norms=nr.norms.map(x=>({id:x.id,ref:x.ref,title:x.title,quote:x.quote,relevance:x.relevance,source:x.source,claimIds:x.evidence.map(m=>cl('',m,x.title))}))}catch{}
+  mine.norms=[{id:'n0',ref:'Подбираю нормы',title:'Применимые нормы',quote:'',relevance:'Подбираю нормы на lex.uz. Это займёт около 30 секунд, затем эта ячейка обновится.'}];
   if(r.title&&!mine.titleEdited){mine.caseTitle=r.title;$('#case-title').value=r.title;document.title=`FACTUM · ${r.title}`}
   if(r.description)mine.caseDescription=r.description;
   mine.structured=true;toast('Карта дела построена. Проверяйте пункты по цитатам.')}
  catch(e){if(state===mine)toast(e.message||'Не удалось построить карту дела.')}
- finally{analyzing=false;const bn=$('#ai-busy');if(bn)bn.hidden=true;if(state===mine){render();save()}}}
+ finally{analyzing=false;const bn=$('#ai-busy');if(bn)bn.hidden=true;if(state===mine){render();save()}if(mine.structured)loadNorms(mine)}}
+async function loadNorms(mine){const none=()=>{mine.norms=[{id:'n0',ref:'Нужно добавить',title:'Применимые нормы',quote:'',relevance:'Подходящих норм не нашлось среди документов lex.uz, которые подключены в программе (кодексы и закон об образовании). Нормы права нужно подобрать и проверить по lex.uz. ИИ не подбирает статьи по памяти, чтобы не ошибиться в номерах.'}]};
+ try{const r=await aiPost('/api/ai/norms',{lang:getLang(),documents:mine.documents.map(d=>({id:d.id,name:d.name,text:d.text}))});
+  if(r.norms&&r.norms.length){let k=0;mine.norms=r.norms.map(x=>({id:x.id,ref:x.ref,title:x.title,quote:x.quote,relevance:x.relevance,source:x.source,claimIds:x.evidence.map(m=>{const id='nq'+(++k);mine.claims.push({id,person:'',text:x.title,time:'',docId:m.docId,quote:m.quote});return id})}))}else none()}
+ catch{none()}
+ if(state===mine){render();save()}}
 function activate(id){const n=tree[id];if(!n)return;if(id==='ai'){showChat();return}if(id==='src-add'){chooseFiles('append');return}if(n.children.length){const before=layout(tree,opened).nodes.find(x=>x.id===id);selected=id;opened.has(id)?opened.delete(id):opened.add(id);closeDrawers();renderGraph(false);const g=layout(tree,opened),after=g.nodes.find(x=>x.id===id);if(before&&after){ox+=(before.x-after.x)*scale;oy+=(before.y-after.y)*scale;if(opened.has(id))reveal(g,after)}transform();if(id==='root'&&opened.has('root'))fit()}else showDetail(id)}
 function reveal(g,node){const r=$('#stage').getBoundingClientRect(),m=24,kids=g.edges.filter(([a])=>a.id===node.id).map(([,b])=>b);if(!kids.length)return;const all=[node,...kids],minX=Math.min(...all.map(n=>n.x))*scale+ox,maxX=Math.max(...all.map(n=>n.x+n.width))*scale+ox,minY=Math.min(...all.map(n=>n.y))*scale+oy,maxY=Math.max(...all.map(n=>n.y+122))*scale+oy;let dx=0,dy=0;if(maxX>r.width-m)dx=-Math.min(maxX-(r.width-m),minX-m);if(minX+dx<m)dx=m-minX;if(maxY>r.height-m)dy=-Math.min(maxY-(r.height-m),minY-m);if(minY+dy<m)dy=m-minY;ox+=dx;oy+=dy}
 document.addEventListener('submit',e=>{if(e.target.id==='chat-form'){e.preventDefault();const i=$('#chat-q');const v=i.value;i.value='';askChat(v)}});
