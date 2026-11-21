@@ -9,7 +9,7 @@
 | | |
 |---|---|
 | **Презентация (PDF)** | [presentation/FACTUM_Pitch_RU.pdf](presentation/FACTUM_Pitch_RU.pdf) |
-| **Работающий МВП** | https://factum-production-5ee215f3.up.railway.app (вход по коду доступа, код передаётся организаторам отдельно) |
+| **Работающий МВП** | https://factum-production-5ee215f3.up.railway.app (код доступа: **758275**) |
 | **Код проекта** | этот репозиторий |
 
 ## Что умеет МВП
