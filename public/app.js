@@ -98,10 +98,13 @@ async function analyzeCase(){if(!aiLive||!state||state.mode==='demo'||state.stru
   mine.structured=true;toast('Карта дела построена. Проверяйте пункты по цитатам.')}
  catch(e){if(state===mine)toast(e.message||'Не удалось построить карту дела.')}
  finally{analyzing=false;const bn=$('#ai-busy');if(bn)bn.hidden=true;if(state===mine){render();save()}if(mine.structured)loadNorms(mine)}}
-async function loadNorms(mine){const none=()=>{mine.norms=[{id:'n0',ref:'Нужно добавить',title:'Применимые нормы',quote:'',relevance:'Подходящих норм не нашлось среди документов lex.uz, которые подключены в программе (кодексы и закон об образовании). Нормы права нужно подобрать и проверить по lex.uz. ИИ не подбирает статьи по памяти, чтобы не ошибиться в номерах.'}]};
+async function loadNorms(mine,attempt=0){const none=()=>{mine.norms=[{id:'n0',ref:'Нужно добавить',title:'Применимые нормы',quote:'',relevance:'Подходящих норм не нашлось среди документов lex.uz, которые подключены в программе (кодексы и закон об образовании). Нормы права нужно подобрать и проверить по lex.uz. ИИ не подбирает статьи по памяти, чтобы не ошибиться в номерах.'}]};
+ const failed=()=>{mine.norms=[{id:'n0',ref:'Не удалось подобрать',title:'Применимые нормы',quote:'',relevance:'Сервис ИИ не ответил, поэтому нормы не подобраны. Это не значит, что норм нет. Загрузите файл ещё раз или повторите позже.'}]};
+ let ok=true;
  try{const r=await aiPost('/api/ai/norms',{lang:getLang(),documents:mine.documents.map(d=>({id:d.id,name:d.name,text:d.text}))});
   if(r.norms&&r.norms.length){let k=0;mine.norms=r.norms.map(x=>({id:x.id,ref:x.ref,title:x.title,quote:x.quote,relevance:x.relevance,source:x.source,claimIds:x.evidence.map(m=>{const id='nq'+(++k);mine.claims.push({id,person:'',text:x.title,time:'',docId:m.docId,quote:m.quote});return id})}))}else none()}
- catch{none()}
+ catch(e){console.warn('norms',e&&e.message);ok=false}
+ if(!ok){if(attempt<1){await new Promise(r=>setTimeout(r,2500));return loadNorms(mine,attempt+1)}failed()}
  if(state===mine){render();save()}}
 function activate(id){const n=tree[id];if(!n)return;if(id==='ai'){showChat();return}if(id==='src-add'){chooseFiles('append');return}if(n.children.length){const before=layout(tree,opened).nodes.find(x=>x.id===id);selected=id;opened.has(id)?opened.delete(id):opened.add(id);closeDrawers();renderGraph(false);const g=layout(tree,opened),after=g.nodes.find(x=>x.id===id);if(before&&after){ox+=(before.x-after.x)*scale;oy+=(before.y-after.y)*scale;if(opened.has(id))reveal(g,after)}transform();if(id==='root'&&opened.has('root'))fit()}else showDetail(id)}
 function reveal(g,node){const r=$('#stage').getBoundingClientRect(),m=24,kids=g.edges.filter(([a])=>a.id===node.id).map(([,b])=>b);if(!kids.length)return;const all=[node,...kids],minX=Math.min(...all.map(n=>n.x))*scale+ox,maxX=Math.max(...all.map(n=>n.x+n.width))*scale+ox,minY=Math.min(...all.map(n=>n.y))*scale+oy,maxY=Math.max(...all.map(n=>n.y+122))*scale+oy;let dx=0,dy=0;if(maxX>r.width-m)dx=-Math.min(maxX-(r.width-m),minX-m);if(minX+dx<m)dx=m-minX;if(maxY>r.height-m)dy=-Math.min(maxY-(r.height-m),minY-m);if(minY+dy<m)dy=m-minY;ox+=dx;oy+=dy}
