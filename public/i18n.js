@@ -88,6 +88,11 @@ const T = [
   ['Открыть в новом окне ↗', 'Open in a new window ↗', 'Yangi oynada ochish ↗'],
   ['Открыть запись в новом окне ↗', 'Open the recording in a new window ↗', 'Yozuvni yangi oynada ochish ↗'],
   ['Открыть источник на lex.uz ↗', 'Open the source on lex.uz ↗', 'Manbani lex.uz da ochish ↗'],
+  ['Обезличить данные: выкл', 'Anonymize data: off', 'Maʼlumotlarni yashirish: oʻchiq'],
+  ['Обезличивание: вкл ✓', 'Anonymizing: on ✓', 'Yashirish: yoqilgan ✓'],
+  ['Скрываются паспорта, ПИНФЛ, телефоны, почты, карты, даты рождения и ФИО. Адреса и отдельные имена могут остаться, проверьте текст. Сканы PDF обезличить нельзя.', 'Passport numbers, PINFL, phones, emails, cards, dates of birth and full names are hidden. Addresses and single names may remain, so check the text. Scanned PDFs cannot be anonymized.', 'Pasport, PINFL, telefon, pochta, karta, tugʻilgan sana va F.I.Sh. yashiriladi. Manzillar va alohida ismlar qolishi mumkin, matnni tekshiring. Skaner qilingan PDF ni yashirib boʻlmaydi.'],
+  ['Обезличивание включено. Новые файлы будут обезличены в браузере до отправки ИИ.', 'Anonymizing is on. New files will be anonymized in the browser before they are sent to the AI.', 'Yashirish yoqildi. Yangi fayllar SI ga yuborilishidan oldin brauzerda yashiriladi.'],
+  ['Обезличивание выключено.', 'Anonymizing is off.', 'Yashirish oʻchirildi.'],
   ['Открыть статью на lex.uz ↗', 'Open the article on lex.uz ↗', 'Moddani lex.uz da ochish ↗'],
   ['Подбираю нормы', 'Selecting norms', 'Normalar tanlanmoqda'],
   ['Подбираю нормы на lex.uz. Это займёт около 30 секунд, затем эта ячейка обновится.', 'Selecting norms from lex.uz. This takes about 30 seconds, then this cell will update.', 'Normalar lex.uz dan tanlanmoqda. Bu taxminan 30 soniya oladi, soʻng bu katak yangilanadi.'],
@@ -255,6 +260,9 @@ const RULES = [
   [/: размер превышает (\d+) МБ\./g, [': the size exceeds $1 MB.', ': hajmi $1 MB dan oshadi.']],
   [/: для PDF нужен подключённый ИИ\./g, [': PDF requires a connected AI.', ': PDF uchun ulangan AI kerak.']],
   [/: поддерживаются TXT, MD, Word \(DOCX\), RTF, ODT и PDF\./g, [': supported formats are TXT, MD, Word (DOCX), RTF, ODT and PDF.', ': TXT, MD, Word (DOCX), RTF, ODT va PDF qoʻllab-quvvatlanadi.']],
+  [/Обезличено замен: (\d+)\. Проверьте текст в разделе «Источники»\./g, ['Replacements made: $1. Check the text in the "Sources" section.', 'Almashtirishlar: $1. Matnni «Manbalar» boʻlimida tekshiring.']],
+  [/(.+?): PDF нельзя обезличить заранее, его читает ИИ\. Выключите обезличивание или загрузите Word или текст\./g, ['$1: a PDF cannot be anonymized in advance, the AI reads it. Turn anonymizing off or upload Word or text.', '$1: PDF ni oldindan yashirib boʻlmaydi, uni SI oʻqiydi. Yashirishni oʻchiring yoki Word yoki matn yuklang.']],
+  [/(.+?) · обезличено/g, ['$1 · anonymized', '$1 · yashirilgan']],
   [/Читаю (.+?)\. PDF занимает до минуты\./g, ['Reading $1. A PDF takes up to a minute.', '$1 oʻqilmoqda. PDF bir daqiqagacha vaqt oladi.']],
   [/Читаю (.+?)…/g, ['Reading $1…', '$1 oʻqilmoqda…']]
 ];

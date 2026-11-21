@@ -72,6 +72,12 @@ button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{o
 .ai-busy{position:absolute;left:50%;top:18px;transform:translateX(-50%);z-index:8;display:flex;align-items:center;gap:12px;background:#0f1a6aee;border:1px solid #5a7be0;color:#e6efff;border-radius:999px;padding:10px 20px;font-size:13.5px;box-shadow:0 8px 30px #0008,0 0 24px #4f86f055;max-width:92%}
 .ai-spin{flex:none;width:16px;height:16px;border-radius:50%;border:2px solid #7fa3da55;border-top-color:#9fd4ff;animation:aispin .9s linear infinite}
 @keyframes aispin{to{transform:rotate(360deg)}}
+.anon-btn{display:block;margin:14px auto 0;background:transparent;border:1px solid #3a52b8;color:#b9c8f5;border-radius:999px;padding:8px 16px;font-size:13px;cursor:pointer;font-family:inherit}
+.anon-btn:hover{border-color:#7fa3ff;color:#fff}
+.anon-btn[aria-pressed="true"]{background:#1f3fa0;border-color:#9fd4ff;color:#fff;box-shadow:0 0 14px #4f86f055}
+.workbar .anon-btn{display:inline-block;margin:0}
+.anon-hint{text-align:center;margin-left:auto;margin-right:auto}
+.anon-hint{display:block;margin-top:8px;max-width:520px;color:#8fa2dd;line-height:1.5}
 .read-busy{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:60;display:flex;align-items:center;gap:16px;background:#0f1a6af5;border:1px solid #7fa3ff;color:#fff;border-radius:16px;padding:22px 30px;font-size:17px;line-height:1.5;box-shadow:0 20px 60px #000a,0 0 0 9999px #0006,0 0 40px #4f86f066;max-width:88vw}
 .read-busy[hidden]{display:none}
 .read-busy .ai-spin{width:28px;height:28px;border-width:3px}
