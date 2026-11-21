@@ -88,6 +88,8 @@ const T = [
   ['Открыть в новом окне ↗', 'Open in a new window ↗', 'Yangi oynada ochish ↗'],
   ['Открыть запись в новом окне ↗', 'Open the recording in a new window ↗', 'Yozuvni yangi oynada ochish ↗'],
   ['Открыть источник на lex.uz ↗', 'Open the source on lex.uz ↗', 'Manbani lex.uz da ochish ↗'],
+  ['На чём основано в материалах дела:', 'What this rests on in the case materials:', 'Ish materiallarida bunga nima asos boʻladi:'],
+  ['В базе проверенных норм не нашлось подходящих. Нормы права нужно подобрать и проверить по lex.uz. ИИ не подбирает статьи по памяти, чтобы не ошибиться в номерах.', 'No suitable norms were found in the verified norms base. Legal norms need to be selected and checked on lex.uz. The AI does not pick articles from memory, to avoid mistakes in numbers.', 'Tekshirilgan normalar bazasida mos normalar topilmadi. Huquqiy normalarni lex.uz da tanlab, tekshirish kerak. SI raqamlarda adashmaslik uchun moddalarni xotiradan tanlamaydi.'],
   ['Документы участника:', 'Participant documents:', 'Ishtirokchi hujjatlari:'],
   ['Данные об участнике не добавлены.', 'No data about the participant has been added.', 'Ishtirokchi haqida maʼlumot qoʻshilmagan.'],
   ['Раскройте карточки этого раздела на карте.', 'Expand the cards of this section on the map.', 'Bu boʻlim kartalarini xaritada oching.'],
