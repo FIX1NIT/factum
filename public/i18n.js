@@ -88,6 +88,7 @@ const T = [
   ['Открыть в новом окне ↗', 'Open in a new window ↗', 'Yangi oynada ochish ↗'],
   ['Открыть запись в новом окне ↗', 'Open the recording in a new window ↗', 'Yozuvni yangi oynada ochish ↗'],
   ['Открыть источник на lex.uz ↗', 'Open the source on lex.uz ↗', 'Manbani lex.uz da ochish ↗'],
+  ['Открыть статью на lex.uz ↗', 'Open the article on lex.uz ↗', 'Moddani lex.uz da ochish ↗'],
   ['Подбираю нормы', 'Selecting norms', 'Normalar tanlanmoqda'],
   ['Подбираю нормы на lex.uz. Это займёт около 30 секунд, затем эта ячейка обновится.', 'Selecting norms from lex.uz. This takes about 30 seconds, then this cell will update.', 'Normalar lex.uz dan tanlanmoqda. Bu taxminan 30 soniya oladi, soʻng bu katak yangilanadi.'],
   ['Подходящих норм не нашлось среди документов lex.uz, которые подключены в программе (кодексы и закон об образовании). Нормы права нужно подобрать и проверить по lex.uz. ИИ не подбирает статьи по памяти, чтобы не ошибиться в номерах.', 'No suitable norms were found among the lex.uz documents connected to the program (codes and the education law). Legal norms need to be selected and checked on lex.uz. The AI does not pick articles from memory, to avoid mistakes in numbers.', 'Dasturga ulangan lex.uz hujjatlari (kodekslar va taʼlim toʻgʻrisidagi qonun) ichida mos normalar topilmadi. Huquqiy normalarni lex.uz da tanlab, tekshirish kerak. SI raqamlarda adashmaslik uchun moddalarni xotiradan tanlamaydi.'],
